@@ -5,6 +5,7 @@ let pencilToolCont = document.querySelector(".pencil-tool-cont");
 let eraserToolCont = document.querySelector(".eraser-tool-cont");
 let pencil = document.querySelector(".pencil");
 let eraser = document.querySelector(".eraser");
+let sticky = document.querySelector(".sticky");
 let pencilFlag = false;
 let eraserFlag = false;
 
@@ -46,4 +47,19 @@ pencil.addEventListener("click", (e) => {
 
     if(eraserFlag) eraserToolCont.style.display = "flex";
     else eraserToolCont.style.display = "none";
+})
+
+sticky.addEventListener("click", (e) => {
+   let stickyCont = document.createElement("div");
+   stickyCont.setAttribute('class', "sticky-cont");
+   stickyCont.innerHTML = `
+   <div class="header-cont">
+      <div class="minimize"></div>
+       <div class="remove"></div>
+   </div>
+   <div class="note-cont">
+        <textarea></textarea>
+   </div>
+   `;
+   document.body.appendChild(stickyCont);
 })
