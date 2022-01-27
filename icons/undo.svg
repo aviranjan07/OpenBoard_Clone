@@ -1,18 +1,2 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="21px" height="8px" viewBox="0 0 21 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-    <title>undo</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Rounded" transform="translate(-238.000000, -1534.000000)">
-            <g id="Content" transform="translate(100.000000, 1428.000000)">
-                <g id="-Round-/-Content-/-undo" transform="translate(136.000000, 98.000000)">
-                    <g>
-                        <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
-                        <path d="M12.5,8 C9.85,8 7.45,8.99 5.6,10.6 L3.71,8.71 C3.08,8.08 2,8.52 2,9.41 L2,15 C2,15.55 2.45,16 3,16 L8.59,16 C9.48,16 9.93,14.92 9.3,14.29 L7.39,12.38 C8.78,11.22 10.55,10.5 12.51,10.5 C15.67,10.5 18.4,12.34 19.7,15 C19.97,15.56 20.61,15.84 21.2,15.64 C21.91,15.41 22.27,14.6 21.95,13.92 C20.23,10.42 16.65,8 12.5,8 Z" id="🔹Icon-Color" fill="#1D1D1D"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 399.14 399.14" style="enable-background:new 0 0 399.14 399.14;" xml:space="preserve" width="512px" height="512px"><g><path d="M343.26,188.007c-22.163-53.507-63.836-95.18-117.342-117.343  c-30.658-12.699-63.098-18.107-95.279-16.253l26.127-26.128L128.482,0L39.34,89.142l89.142,89.143l28.284-28.285l-51.742-51.742  c82.072-18.059,168.024,24.77,201.28,105.057c23.823,57.515,16.075,121.894-20.725,172.213l32.287,23.613  c21.577-29.504,35.463-64.25,40.157-100.484C362.866,261.276,357.761,223.015,343.26,188.007z" data-original="#2488FF" class="active-path" fill="#2488FF"/></g> </svg>
