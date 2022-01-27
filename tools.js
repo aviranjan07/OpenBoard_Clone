@@ -81,6 +81,12 @@ function noteActions(minimize, remove, stickyCont){
      remove.addEventListener("click", (e) => {
          stickyCont.remove();
      })
+     minimize.addEventListener("click", (e) => {
+         let noteCont = stickyCont.querySelector(".note-cont");
+         let display = getComputedStyle(noteCont).getPropertyValue("display");
+         if(display === "none") noteCont.style.display = "block";
+         else noteCont.style.display = "none";
+     })
 }
 
 function dragAndDrop(element, event){
