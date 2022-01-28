@@ -6,11 +6,16 @@ let pencilColor = document.querySelectorAll(".pencil-color");
 let pencilWidthElem = document.querySelector(".pencil-width");
 let eraserWidthElem = document.querySelector(".eraser-width");
 let download = document.querySelector(".download");
+let redo = document.querySelector(".redo");
+let undo = document.querySelector(".undo");
 
 let penColor = "red";
 let eraserColor = "white";
 let penWidth = pencilWidthElem.value;
 let eraserWidth = eraserWidthElem.value;
+
+let undoRedoTracker = []; //data
+let track = 0; // represent which actions from tracker array
 
 let mouseDown = false;
 
@@ -38,7 +43,43 @@ canves.addEventListener("mousemove", (e) => {
 })
 canves.addEventListener("mouseup", (e) => {
     mouseDown = false;
+
+    let url = canves.toDataURL();
+    undoRedoTracker.push(url);
+    track = undoRedoTracker.length - 1;
 })
+
+undo.addEventListener("click", (e) => {
+    if(track > 0) track--;
+    //track action
+    let trackObj = {
+        trackValue: track,
+        undoRedoTracker
+    }  
+    undoRedoCanves(trackObj);
+})
+redo.addEventListener("click", (e) => {
+    if(track < undoRedoTracker.length - 1) track++;
+    //track action
+    let trackObj = {
+        trackValue: track,
+        undoRedoTracker
+    }  
+    undoRedoCanves(trackObj);
+
+})
+
+function undoRedoCanves(trackObj){
+    track = trackObj.trackValue;
+    undoRedoTracker = trackObj.undoRedoTracker;
+
+    let url = undoRedoTracker[track];
+    let img = new Image(); // new image reference element
+    img.src = url;
+    img.onload = (e) => {
+        tool.drawImage(img, 0, 0, canves.width, canves.height);
+    }
+}
 
 function beginPath(strokeObj) {
     tool.beginPath();
