@@ -53,3 +53,12 @@ pencilColor.forEach((colorElem) => {
         tool.strokeStyle = penColor;
     })
 })
+
+pencilWidthElem.addEventListener("change", (e) => {
+    penWidth = pencilWidthElem.value;
+    tool.lineWidth = penWidth
+})
+eraserWidthElem.addEventListener("change", (e) => {
+    eraserWidth = eraserWidthElem.value;
+    tool.lineWidth = penWidth
+})
