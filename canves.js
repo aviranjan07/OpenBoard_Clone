@@ -5,6 +5,7 @@ canves.height = window.innerHeight;
 let pencilColor = document.querySelectorAll(".pencil-color");
 let pencilWidthElem = document.querySelector(".pencil-width");
 let eraserWidthElem = document.querySelector(".eraser-width");
+let download = document.querySelector(".download");
 
 let penColor = "red";
 let eraserColor = "white";
@@ -74,4 +75,13 @@ eraser.addEventListener("click", (e) => {
         tool.strokeStyle = penColor;
         tool.lineWidth = penWidth;
     }
+})
+
+download.addEventListener("click", (e) => {
+    let url = canves.toDataURL();
+
+    let a = document.createElement("a");
+    a.href = url;
+    a.download = "board.jpg";
+    a.click();
 })
