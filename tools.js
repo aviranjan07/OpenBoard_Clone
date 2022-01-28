@@ -6,6 +6,7 @@ let eraserToolCont = document.querySelector(".eraser-tool-cont");
 let pencil = document.querySelector(".pencil");
 let eraser = document.querySelector(".eraser");
 let sticky = document.querySelector(".sticky");
+let upload = document.querySelector(".upload");
 let pencilFlag = false;
 let eraserFlag = false;
 
@@ -49,33 +50,63 @@ pencil.addEventListener("click", (e) => {
     else eraserToolCont.style.display = "none";
 })
 
+upload.addEventListener("click", (e) => {
+    // open file explorer
+    let input = document.querySelector("input");
+    input.setAttribute("type", "file");
+    input.click();
+
+    input.addEventListener("change", (e) => {
+        let file = input.files[0];
+        let url = URL.createObjectURL(file);
+     
+        let stickyTemplateHTML = `
+        <div class="header-cont">
+           <div class="minimize"></div>
+            <div class="remove"></div>
+        </div>
+        <div class="note-cont">
+             <img src="${url}"/>
+        </div>
+        `;
+        createSticky(stickyTemplateHTML);
+    })
+   
+})
+
+
 sticky.addEventListener("click", (e) => {
-   let stickyCont = document.createElement("div");
-   stickyCont.setAttribute('class', "sticky-cont");
-   stickyCont.innerHTML = `
+    let stickyTemplateHTML = `
    <div class="header-cont">
       <div class="minimize"></div>
        <div class="remove"></div>
    </div>
    <div class="note-cont">
-        <textarea></textarea>
+        <textarea spellchecks="false"></textarea>
    </div>
    `;
-   document.body.appendChild(stickyCont);
 
-   let minimize = stickyCont.querySelector(".minimize");
-   let remove = stickyCont.querySelector(".remove");
-   noteActions(minimize, remove, stickyCont);
-
-   stickyCont.onmousedown = function(event) {
-       dragAndDrop(stickyCont, event);
-  
-  };
-  
-  stickyCont.ondragstart = function() {
-    return false;
-   };
+   createSticky(stickyTemplateHTML);
 })
+
+function createSticky(stickyTemplateHTML) {
+    let stickyCont = document.createElement("div");
+    stickyCont.setAttribute('class', "sticky-cont");
+    stickyCont.innerHTML = stickyTemplateHTML;
+    document.body.appendChild(stickyCont);
+ 
+    let minimize = stickyCont.querySelector(".minimize");
+    let remove = stickyCont.querySelector(".remove");
+    noteActions(minimize, remove, stickyCont);
+ 
+    stickyCont.onmousedown = function(event) {
+        dragAndDrop(stickyCont, event);
+   };
+   
+   stickyCont.ondragstart = function() {
+     return false;
+    };
+}
 
 function noteActions(minimize, remove, stickyCont){
      remove.addEventListener("click", (e) => {
