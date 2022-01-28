@@ -60,5 +60,14 @@ pencilWidthElem.addEventListener("change", (e) => {
 })
 eraserWidthElem.addEventListener("change", (e) => {
     eraserWidth = eraserWidthElem.value;
-    tool.lineWidth = penWidth
+    tool.lineWidth = eraserWidth
+})
+eraser.addEventListener("click", (e) => {
+    if (eraserFlag) {
+        tool.strokeStyle = eraserColor;
+        tool.lineWidth = eraserWidth;
+    }else {
+        tool.strokeStyle = penColor;
+        tool.lineWidth = penWidth;
+    }
 })
