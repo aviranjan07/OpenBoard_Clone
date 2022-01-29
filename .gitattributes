@@ -30,3 +30,6 @@
 
 # connect socket with frontent ⬇
 # https://socket.io/docs/v4/client-installation/
+
+# nodemon (don't break the connections ) ⬇
+# https://www.npmjs.com/package/nodemon
