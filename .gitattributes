@@ -24,3 +24,6 @@
 
 # exprees library site - ⬇
 # https://www.npmjs.com/package/express
+
+# socket.io (realtimeSocket.IO enables real-time bidirectional event-based communication) ⬇
+# https://www.npmjs.com/package/socket.io
