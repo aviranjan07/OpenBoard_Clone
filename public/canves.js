@@ -1,5 +1,3 @@
-const { Socket } = require("socket.io");
-
 let canves = document.querySelector("canvas");
 canves.width = window.innerWidth;
 canves.height = window.innerHeight;
@@ -30,23 +28,23 @@ tool.lineWidth = penWidth;
 //mousedown - start new path, mousemove- path fill
 canves.addEventListener("mousedown", (e) => {
     mouseDown = true;
-    // beginPath({
-    //     x: e.clientX,
-    //     y: e.clientY
-    // })
     let data = {
         x: e.clientX,
         y: e.clientY
     }
-    Socket.emit("beginPath", data);
+    socket.emit("beginPath", data);
 })
 canves.addEventListener("mousemove", (e) => {
-    if(mouseDown) drawStroke({
-        x: e.clientX,
-        y: e.clientY,
-        color: eraserFlag ? eraserColor : penColor,
-        width: eraserFlag ? eraserWidth : penWidth
-    })
+    if(mouseDown) {
+        let data = {
+            x: e.clientX,
+            y: e.clientY,
+            color: eraserFlag ? eraserColor : penColor,
+            width: eraserFlag ? eraserWidth : penWidth
+        }
+        socket.emit("drawStroke", data);
+    }
+     
 })
 canves.addEventListener("mouseup", (e) => {
     mouseDown = false;
@@ -59,21 +57,22 @@ canves.addEventListener("mouseup", (e) => {
 undo.addEventListener("click", (e) => {
     if(track > 0) track--;
     //track action
-    let trackObj = {
+    let data = {
         trackValue: track,
         undoRedoTracker
     }  
-    undoRedoCanves(trackObj);
+    // undoRedoCanves(trackObj);
+    socket.emit("redoUndo", data);
+
 })
 redo.addEventListener("click", (e) => {
     if(track < undoRedoTracker.length - 1) track++;
     //track action
-    let trackObj = {
+    let data = {
         trackValue: track,
         undoRedoTracker
     }  
-    undoRedoCanves(trackObj);
-
+    socket.emit("redoUndo", data);
 })
 
 function undoRedoCanves(trackObj){
@@ -132,4 +131,15 @@ download.addEventListener("click", (e) => {
     a.href = url;
     a.download = "board.jpg";
     a.click();
+})
+
+socket.on("beginPath", (data) => {
+    // data- data from server 
+    beginPath(data);
+})
+socket.on("drawStroke", (data) => {
+    drawStroke(data);
+})
+socket.on("redoUndo", (data) => {
+    undoRedoCanves(data);
 })

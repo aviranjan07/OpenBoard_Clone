@@ -14,8 +14,17 @@ let io = socket(server);
 
 io.on("connection", (socket) => {
     console.log("made scoket connection");
-
+    
+    // received data
     socket.on("beginPath", (data) => {
-        
+    //    data - data from frontend 
+    // now transfer data to all connected computers
+      io.sockets.emit("beginPath", data);
+    })
+    socket.on("drawStroke", (data) => {
+        io.sockets.emit("drawStroke", data);
+    })
+    socket.on("redoUndo", (data) => {
+        io.sockets.emit("redoUndo", data);
     })
 })
