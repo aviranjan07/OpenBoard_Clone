@@ -1,3 +1,5 @@
+const { Socket } = require("socket.io");
+
 let canves = document.querySelector("canvas");
 canves.width = window.innerWidth;
 canves.height = window.innerHeight;
@@ -28,10 +30,15 @@ tool.lineWidth = penWidth;
 //mousedown - start new path, mousemove- path fill
 canves.addEventListener("mousedown", (e) => {
     mouseDown = true;
-    beginPath({
+    // beginPath({
+    //     x: e.clientX,
+    //     y: e.clientY
+    // })
+    let data = {
         x: e.clientX,
         y: e.clientY
-    })
+    }
+    Socket.emit("beginPath", data);
 })
 canves.addEventListener("mousemove", (e) => {
     if(mouseDown) drawStroke({

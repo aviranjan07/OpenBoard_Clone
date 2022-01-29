@@ -14,4 +14,8 @@ let io = socket(server);
 
 io.on("connection", (socket) => {
     console.log("made scoket connection");
+
+    socket.on("beginPath", (data) => {
+        
+    })
 })
