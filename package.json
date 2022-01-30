@@ -4,7 +4,8 @@
   "description": "OpenBoard is a cross-platform interactive whiteboard application intended for use in a classroom setting.",
   "main": "ap.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
