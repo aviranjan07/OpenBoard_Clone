@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "OpenBoard is a cross-platform interactive whiteboard application intended for use in a classroom setting.",
   "main": "ap.js",
+   "engines": {
+     "node": "16.13.0",
+     "npm": "8.1.0"
+   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
